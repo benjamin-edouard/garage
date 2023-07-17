@@ -1,0 +1,179 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}V. Parrot | Nos occasions{% endblock %}
+
+{% block inline_style %}
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<main>
+    <section class="py-5 text-center container container-background">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Nos occasions</h1>
+                <p class="lead text-body-secondary text-background">Retrouvez ici tous nos véhicules d'occasions</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="filters">
+        <h3>Filtres</h3>
+
+        <noscript>Merci de bien vouloir activer Javascript pour profiter d'une expérience optimale du site</noscript>
+
+        <div class="filters-group">
+            <!-- FILTER PRICE -->
+            <div class="filter-family">
+                <label for="filter-price-min" id="label-price-min">Prix minimum :</label>
+                <input type="range" id="filter-price-min" min="1000" max="50000" step="1000" value="3000">
+            
+                <label for="filter-price-max" id="label-price-max">Prix maximum :</label>
+                <input type="range" id="filter-price-max" min="1000" max="50000" step="1000" value="30000">
+            </div>
+
+            <!-- FILTER KILOMETRES -->
+            <div class="filter-family">
+                <label for="filter-km-min" id="label-km-min">Kilométrage minimum :</label>
+                <input type="range" id="filter-km-min" min="0" max="350000" step="1000" value="0">
+            
+                <label for="filter-km-max" id="label-km-max">Kilométrage maximum :</label>
+                <input type="range" id="filter-km-max" min="1000" max="350000" setp="1000" value="150000">
+            </div>
+
+            <!-- FILTER YEAR -->
+            <div class="filter-family">
+                <label for="filter-year-min" id="label-year-min">Années minimum :</label>
+                <input type="range" id="filter-year-min" min="1950" max="2020" step="1" value="2000">
+            
+                <label for="filter-year-max" id="label-year-max">Années maximum :</label>
+                <input type="range" id="filter-year-max" min="1950" max="2020" setp="1" value="2023">
+            </div>
+        </div>
+    </div>
+
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for car in cars %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="car-price">{{(car.getPrice()/100)|number_format('0', '', ' ')}} €</div>
+                        <img class="ad-illustration" src="uploads/{{ car.getAdIllustration() }}" alt="Illustration for the ad">
+                        <div class="card-body">
+                            <p class="card-text">{{car.getTitleAd()}}</p>
+                            <p class="card-text">{{car.getMilage()|number_format('0', '', ' ')}} kms</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ path('app_car_details', {id:car.getId()}) }}" title="Détails de l'annonce" target="_blank">Détails</a></button>
+                                </div>
+                                <small class="text-body-secondary">{{car.getDatePublication()|date('d-m-Y')}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}
+
+{% block openingHours %}
+    <table class="table-opening-hours">
+        <thead>
+            <tr>
+                <th colspan="3">Matin</th><th colspan="2">Après-midi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hour in hours %}
+                <tr>
+                    <td>{{hour.getDayOfWeek()}}</td>
+                    <td>{{hour.getOpenAm()|format_datetime('none', 'short', locale='fr')}}</td>
+                    <td>{{hour.getCloseAm()|format_datetime('none', 'short', locale='fr')}}</td>
+                    <td>{{hour.getOpenPm()|format_datetime('none', 'short', locale='fr')}}</td>
+                    <td>{{hour.getClosePm()|format_datetime('none', 'short', locale='fr')}}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>Dimanche</td><td colspan="4">Fermé</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

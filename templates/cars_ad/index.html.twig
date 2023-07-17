@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarsAd index{% endblock %}
+
+{% block body %}
+    <h1>CarsAd index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Price</th>
+                <th>ManufactureYear</th>
+                <th>Milage</th>
+                <th>Pictures</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cars_ad in cars_ads %}
+            <tr>
+                <td>{{ cars_ad.id }}</td>
+                <td>{{ cars_ad.price }}</td>
+                <td>{{ cars_ad.manufactureYear }}</td>
+                <td>{{ cars_ad.milage }}</td>
+                <td>{{ cars_ad.pictures ? cars_ad.pictures|json_encode : '' }}</td>
+                <td>
+                    <a href="{{ path('app_cars_ad_show', {'id': cars_ad.id}) }}">show</a>
+                    <a href="{{ path('app_cars_ad_edit', {'id': cars_ad.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cars_ad_new') }}">Create new</a>
+{% endblock %}

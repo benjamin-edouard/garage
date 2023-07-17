@@ -2,15 +2,95 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}V. Parrot{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/form.css') }}">
         {% block stylesheets %}
         {% endblock %}
 
         {% block javascripts %}
         {% endblock %}
+
+        {% block inline_style %}
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+            <h1><a href="{{ path('app_home') }}">Vincent Parrot</a></h1>
+
+            <!--Menu icon for mobile version -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+
+            <!-- Menu for desktop version -->
+            <menu class="main-menu"> 
+                <nav>  
+                    <ul>   
+                        <li class="menu-item"><a href="{{path('app_home')}}">Accueil</a></li>
+                        <li class="menu-item"><a href="{{path('app_prestations')}}">Nos prestations</a></li>
+                        <li class="menu-item"><a href="{{path('app_second_hand_cars')}}">Nos occasions</a></li>
+                        <li class="menu-item"><a href="{{path('app_contact')}}">Contact</a></li>
+                        <li class="menu-item btn btn-success"><a href="{{path('admin')}}">Connexion</a></li>
+                    </ul>
+                </nav>
+            </menu>
+        </header>
+        {% block body %}
+
+
+        {% endblock %}
+
+
+        <section class="garage-information">
+            <article>
+                <h3>Formulaire de contact</h3>
+
+                <div class="contact-form">
+                    <form>
+                        <label for="user-lastname">NOM</label>
+                        <input type="text" class="contact-form-field" id="user-lastname" name="user-lastname">
+                        
+                        <label for="user-firstname">Prénom</label>
+                        <input type="text" class="contact-form-field" id="user-firstname" name="user-firstname">
+                        
+                        <label for="user-email">E-mail</label>
+                        <input type="email" class="contact-form-field" id="user-email" name="user-email">
+
+                        <label for="user-telephone">Téléphone</label>
+                        <input type="tel" class="contact-form-field" id="user-telephone" name="user-telephone">
+
+                        {% block carDetails %}
+                        {% endblock %}
+
+                        <label for="user-message">Message</label>
+                        <textarea class="contact-form-field" id="user-message" name="user-message" rows="15"></textarea>
+
+                        <input type="submit" value="Envoyer" name="user-submit">
+                    </form>
+                </div>
+            </article>
+
+            <article>
+                <h3>Horaires d'ouverture</h3>
+
+                {% block openingHours %}
+                {% endblock %}
+            </article>
+        </section>
+
+        <section class="phone-number">
+            <i class="bi bi-telephone"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+            </svg>
+            02 96 47 81 69
+        </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script src="{{ asset('assets/js/filters.js')}}"></script>
+        <script src="{{ asset('assets/js/form.js')}}"></script>
     </body>
 </html>

@@ -1,0 +1,278 @@
+/* SCSS HEX */
+/* SCSS HSL */
+/* SCSS RGB */
+/* SCSS Gradient */
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@200&display=swap");
+/* SCSS HEX */
+/* SCSS HSL */
+/* SCSS RGB */
+/* SCSS Gradient */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+label {
+  align-self: center;
+  font-size: 1.1rem;
+  margin-bottom: 0.4em;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+form, label {
+  width: max(80%, 400px);
+}
+
+input {
+  padding: 0.3rem;
+}
+
+input, textarea {
+  align-self: center;
+  width: 80%;
+}
+
+input[type=submit] {
+  background-color: rgb(255, 127, 17);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 800;
+  padding: 1rem;
+  margin-top: 1.1rem;
+}
+input[type=submit]:hover {
+  background-color: rgb(255, 63, 0);
+}
+
+body {
+  font-family: "Barlow", "sans-serif";
+  margin: 0 auto;
+  width: 100%;
+}
+
+header {
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+header svg {
+  cursor: pointer;
+  color: rgb(255, 255, 252);
+  margin-right: 1rem;
+  width: 40px;
+}
+header menu.main-menu {
+  display: none;
+}
+
+h1 {
+  color: rgb(255, 63, 0);
+  font-family: "Rajdhani", "sans-serif";
+  margin-left: 1rem;
+  padding: 1rem;
+}
+h1 a {
+  color: rgb(255, 63, 0);
+  text-decoration: none;
+}
+
+h2,
+h3 {
+  text-align: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* HOME PAGE COVER */
+main.home-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+main.home-cover img {
+  width: 100%;
+}
+main.home-cover h1 {
+  color: rgb(0, 0, 0);
+  font-size: 4rem;
+  position: absolute;
+  top: 25vh;
+}
+main.home-cover div.home-call-action {
+  position: absolute;
+  top: calc(25vh + 10%);
+}
+main.home-cover div.home-call-action a {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
+
+/* HOUR TABLE */
+table.table-opening-hours {
+  font-size: 1.2rem;
+  margin: 2rem auto;
+  width: min(60%, 600px);
+}
+table.table-opening-hours th {
+  text-align: center;
+}
+table.table-opening-hours tr:nth-child(odd) {
+  background-color: rgb(216, 216, 216);
+}
+table.table-opening-hours td:first-child {
+  font-weight: bold;
+}
+table.table-opening-hours td:last-child {
+  text-align: center;
+}
+
+/* PHONE NUMBER */
+section.phone-number {
+  background-color: rgb(255, 63, 0);
+  border-radius: 5px;
+  color: rgb(255, 255, 252);
+  font-size: 2rem;
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  opacity: 0.5;
+  padding: 0.5rem;
+}
+section.phone-number:hover {
+  opacity: 1;
+}
+section.phone-number svg {
+  vertical-align: middle;
+  width: 35px;
+}
+
+/* SECOND HAND CARS PAGE*/ 
+section.container-background {
+  background-image: url("../images/parking-spot-825371.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.text-background {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-weight: 400;
+  padding: 0.5rem;
+}
+
+div.car-price {
+  background-color: rgb(0, 0, 0);
+  border-radius: 3px;
+  color: rgb(255, 255, 252);
+  padding: 3px 8px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+img.ad-illustration {
+  height: 200px;
+}
+
+@media screen and (min-width: 1100px) {
+  header svg {
+    display: none;
+  }
+  header menu.main-menu {
+    display: block;
+  }
+  header menu.main-menu nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 1.5rem;
+  }
+  header menu.main-menu nav ul li {
+    color: rgb(255, 255, 252);
+    font-size: 1.2rem;
+    padding: 1rem;
+    list-style-type: none;
+  }
+  header menu.main-menu nav ul li a {
+    color: rgb(255, 255, 252);
+    text-decoration: none;
+  }
+  header menu.main-menu nav ul li a:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(255, 127, 17);
+  }
+  main.home-cover h1 {
+    font-size: 6rem;
+    top: calc(50% - 3rem);
+  }
+  main.home-cover div.home-call-action {
+    position: absolute;
+    top: 60%;
+  }
+  main.home-cover div.home-call-action a {
+    font-size: 1.8rem;
+  }
+  div.filters {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    padding: 3rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+  div.filters div.filters-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 80%;
+  }
+  div.filters div.filters-group div.filter-family {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+  input[type=range] {
+    width: 300px;
+  }
+  img.ad-illustration {
+    height: 280px;
+  }
+  section.garage-information {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  section.garage-information article {
+    width: 50%;
+  }
+}
+/* 1500px BREAKPOINT --------------------------------------------------------------------- */
+@media screen and (max-width: 1500px) {
+  section.garage-information {
+    display: flex;
+    flex-direction: column;
+  }
+  section.garage-information article {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  div.filters div.filters-group {
+    width: 100%;
+  }
+}/*# sourceMappingURL=style.css.map */

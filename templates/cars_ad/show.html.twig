@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarsAd{% endblock %}
+
+{% block body %}
+    <h1>CarsAd</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cars_ad.id }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ cars_ad.price }}</td>
+            </tr>
+            <tr>
+                <th>ManufactureYear</th>
+                <td>{{ cars_ad.manufactureYear }}</td>
+            </tr>
+            <tr>
+                <th>Milage</th>
+                <td>{{ cars_ad.milage }}</td>
+            </tr>
+            <tr>
+                <th>Pictures</th>
+                <td>{{ cars_ad.pictures ? cars_ad.pictures|json_encode : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cars_ad_index') }}">back to list</a>
+
+    <a href="{{ path('app_cars_ad_edit', {'id': cars_ad.id}) }}">edit</a>
+
+    {{ include('cars_ad/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}V. Parrot | Contact{% endblock %}
+
+{% block openingHours %}
+    <table class="table-opening-hours">
+        <thead>
+            <tr>
+                <th colspan="3">Matin</th><th colspan="2">Après-midi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hour in hours %}
+                <tr>
+                    <td>{{hour.getDayOfWeek()}}</td>
+                    <td>{{hour.getOpenAm()|format_datetime('none', 'short', locale='fr')}}</td>
+                    <td>{{hour.getCloseAm()|format_datetime('none', 'short', locale='fr')}}</td>
+                    <td>{{hour.getOpenPm()|format_datetime('none', 'short', locale='fr')}}</td>
+                    <td>{{hour.getClosePm()|format_datetime('none', 'short', locale='fr')}}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>Dimanche</td><td colspan="4">Fermé</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

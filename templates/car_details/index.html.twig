@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garage V. Parrot | Nos occasions{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/ad-details.css')}}">
+{% endblock %}
+
+{% block body %}
+    {% for details in carDetails %}
+
+        <main class="container-car-details">
+            <h3>{{ details.getTitleAd() }}</h3>
+
+            <img src="/uploads/{{ details.getAdIllustration() }}" alt="Illustration for the ad">
+
+            <div class="">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="details ad-details-price">
+                <strong>Prix : </strong>{{ (details.getPrice()/100)|number_format('0', '', ' ') }} €
+            </div>
+
+            <div class="details ad-details-milage">
+                <strong>Kilométrage : </strong>{{ details.getMilage()|number_format('0', '', ' ')}} kms
+            </div>
+        </main>
+
+        <hr>
+
+    {% endfor %}
+{% endblock %}
+
+{% block carDetails %}
+    <label>Sujet</label>
+    <input type="text" class="contact-form-field" name="subject" id="subject-car-details" disabled>
+{% endblock %}
+
+{% block openingHours %}
+    <table class="table-opening-hours">
+        <thead>
+            <tr>
+                <th colspan="3">Matin</th><th colspan="2">Après-midi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hour in hours %}
+                <tr>
+                    <td>{{hour.getDayOfWeek()}}</td>
+                    <td>{{hour.getOpenAm()|format_datetime('none', 'short', locale='fr')}}</td>
+                    <td>{{hour.getCloseAm()|format_datetime('none', 'short', locale='fr')}}</td>
+                    <td>{{hour.getOpenPm()|format_datetime('none', 'short', locale='fr')}}</td>
+                    <td>{{hour.getClosePm()|format_datetime('none', 'short', locale='fr')}}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td>Dimanche</td><td colspan="4">Fermé</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

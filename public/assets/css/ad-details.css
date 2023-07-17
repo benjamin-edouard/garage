@@ -1,0 +1,20 @@
+/* SCSS HEX */
+/* SCSS HSL */
+/* SCSS RGB */
+/* SCSS Gradient */
+@media screen and (min-width: 1100px) {
+  main.container-car-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1.5rem auto;
+    width: max(80%, 600px);
+  }
+  .details {
+    font-size: 1.3em;
+  }
+  div.ad-details-price {
+    display: block;
+  }
+}/*# sourceMappingURL=ad-details.css.map */

@@ -1,0 +1,197 @@
+@import 'colors'
+@import 'fonts'
+@import 'form'
+
+body
+    font-family: 'Barlow', 'sans-serif'
+    margin: 0 auto
+    width: 100%
+     
+header
+    background-color: $black
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    svg
+        cursor: pointer
+        color: $baby-powder
+        margin-right: 1rem
+        width: 40px
+    menu.main-menu
+        display: none
+
+h1
+    color: $coquelicot
+    font-family: 'Rajdhani', 'sans-serif'
+    margin-left: 1rem
+    padding: 1rem
+    a
+        color: $coquelicot
+        text-decoration: none
+
+h2, 
+h3
+    text-align: center
+
+a
+    color: inherit
+    text-decoration: none
+
+/* HOME PAGE COVER */
+main.home-cover
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    align-items: center
+    margin-bottom: 2rem
+    width: 100%
+    img
+        width: 100%
+    h1
+        color: $black
+        font-size: 4rem
+        position: absolute
+        top: calc(100vh /4)
+    div.home-call-action
+        position: absolute
+        top: calc((100vh / 4) + 10%)
+        a
+            font-size: 1.5rem
+            margin: 0.5rem
+
+/* HOUR TABLE */
+table.table-opening-hours
+    font-size: 1.2rem
+    margin: 2rem auto
+    width: min(60%, 600px)
+    th
+        text-align: center
+    tr:nth-child(odd)
+        background-color: rgb(216, 216, 216)
+    td:first-child
+        font-weight: bold
+    td:last-child
+        text-align: center
+
+/* PHONE NUMBER */
+section.phone-number
+    background-color: $coquelicot
+    border-radius: 5px
+    color: $baby-powder
+    font-size: 2rem
+    position: fixed
+    bottom: 3rem
+    right: 3rem
+    opacity: 0.5
+    padding: 0.5rem
+    &:hover
+        opacity: 1
+    svg
+        vertical-align: middle
+        width: 35px
+
+/* SECOND HAND CARS PAGE*/ 
+section.container-background
+    background-image: url('../images/parking-spot-825371.jpg')
+    background-repeat: no-repeat
+    background-size: 100%
+
+.text-background
+    background-color: $black
+    color: white
+    font-weight: 400
+    padding: 0.5rem
+
+div.car-price 
+    background-color: $black
+    border-radius: 3px
+    color: $baby-powder
+    padding: 3px 8px
+    position: absolute
+    top: 10px
+    left: 10px
+
+img.ad-illustration
+    height: 200px
+
+// 1100px BREAKPOINT ---------------------------------------------------------------------
+@media screen and (min-width: 1100px)
+    header
+        svg
+            display: none
+        menu.main-menu
+            display: block
+            nav
+                ul
+                    display: flex
+                    flex-direction: row
+                    justify-content: space-evenly
+                    align-items: center
+                    margin-right: 1.5rem
+                    li
+                        color: $baby-powder
+                        font-size: 1.2rem
+                        padding: 1rem
+                        list-style-type: none
+                        a
+                            color: $baby-powder
+                            text-decoration: none
+                            &:hover 
+                                text-decoration: underline
+                                text-decoration-color: $orange-wheel
+
+    main.home-cover
+        h1
+            font-size: 6rem
+            top: calc(50% - 3rem)
+        div.home-call-action
+            position: absolute
+            top: 60%
+            a
+                font-size: 1.8rem
+
+    div.filters
+        display: flex
+        flex-direction: column 
+        justify-items: center
+        align-items: center
+        padding: 3rem
+        margin: 0 auto
+        width: 100% 
+        div.filters-group
+            display: flex
+            flex-direction: row
+            justify-content: space-evenly
+            width: 80%
+            div.filter-family
+                display: flex
+                flex-direction: column
+                width: 30%
+
+    input[type="range"]
+        width: 300px 
+
+    img.ad-illustration
+        height: 280px                               
+
+    section.garage-information
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        article
+            width: 50%
+
+/* 1500px BREAKPOINT --------------------------------------------------------------------- */
+@media screen and (max-width: 1500px)
+    
+    section.garage-information
+        display: flex
+        flex-direction: column
+        article
+            margin-top: 2rem
+            width: 100%
+
+    div.filters
+        div.filters-group
+            width: 100%        
