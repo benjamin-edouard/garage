@@ -99,10 +99,10 @@
             <!-- FILTER PRICE -->
             <div class="filter-family">
                 <label for="filter-price-min" id="label-price-min">Prix minimum :</label>
-                <input type="range" id="filter-price-min" min="1000" max="50000" step="1000" value="3000">
+                <input type="range" id="filter-price-min" min="1000" max="50000" step="1000" value="1000">
             
                 <label for="filter-price-max" id="label-price-max">Prix maximum :</label>
-                <input type="range" id="filter-price-max" min="1000" max="50000" step="1000" value="30000">
+                <input type="range" id="filter-price-max" min="1000" max="50000" step="1000" value="50000">
             </div>
 
             <!-- FILTER KILOMETRES -->
@@ -152,28 +152,41 @@
     </div>
 
 </main>
-{% endblock %}
-
-{% block openingHours %}
-    <table class="table-opening-hours">
-        <thead>
-            <tr>
-                <th colspan="3">Matin</th><th colspan="2">Après-midi</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for hour in hours %}
-                <tr>
-                    <td>{{hour.getDayOfWeek()}}</td>
-                    <td>{{hour.getOpenAm()|format_datetime('none', 'short', locale='fr')}}</td>
-                    <td>{{hour.getCloseAm()|format_datetime('none', 'short', locale='fr')}}</td>
-                    <td>{{hour.getOpenPm()|format_datetime('none', 'short', locale='fr')}}</td>
-                    <td>{{hour.getClosePm()|format_datetime('none', 'short', locale='fr')}}</td>
-                </tr>
-            {% endfor %}
-            <tr>
-                <td>Dimanche</td><td colspan="4">Fermé</td>
-            </tr>
-        </tbody>
-    </table>
+{% block contactForm %}
+        <section class="garage-information">
+            <article>
+                <h3>Formulaire de contact</h3>
+                <div class="contact-form">
+                    {{ form(form) }}
+                </div>
+            </article>
+    {% endblock %}
+    
+    {% block openingHours %}
+            <article>
+                <h3>Horaires d'ouverture</h3>
+                <table class="table-opening-hours">
+                    <thead>
+                        <tr>
+                            <th colspan="3">Matin</th><th colspan="2">Après-midi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for hour in hours %}
+                            <tr>
+                                <td>{{hour.getDayOfWeek()}}</td>
+                                <td>{{hour.getOpenAm()|format_datetime('none', 'short', locale='fr')}}</td>
+                                <td>{{hour.getCloseAm()|format_datetime('none', 'short', locale='fr')}}</td>
+                                <td>{{hour.getOpenPm()|format_datetime('none', 'short', locale='fr')}}</td>
+                                <td>{{hour.getClosePm()|format_datetime('none', 'short', locale='fr')}}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td>Dimanche</td><td colspan="4">Fermé</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+    {% endblock %}
 {% endblock %}

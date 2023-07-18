@@ -11,6 +11,8 @@ $(document).ready(function() {
 
     let yearMin = $('#filter-year-min').val()
 
+    let carPrice = new Array()
+
     $('#label-price-min').append(` ${priceMin} €`)
     $('#label-price-max').append(` ${priceMax} €`)
 
@@ -38,5 +40,25 @@ $(document).ready(function() {
 
         label.text(`${splitLabel[0]} : ${newFilterValue} ${units}`)
     })
+
+    $('div.card').each(function() {
+        carPrice.push($('div.car-price').text().replaceAll(' ', '').split('€'))
+    })
+
+    $('#filter-price-min, #filter-price-max').on('change', function() {
+
+        priceMin = $('#filter-price-min').val()
+        priceMax = $('#filter-price-max').val()
+        
+        for(let i = 0; i < carPrice.length; i++) {
+            if(carPrice[i] > priceMin && carPrice[i] < priceMax) {
+                console.log(`Min price is : ${priceMin} and max price is : ${priceMax}`)
+            } else {
+                $(this).hide()
+            }
+        }
+    })
+
+
 
 }) // End of document ready
