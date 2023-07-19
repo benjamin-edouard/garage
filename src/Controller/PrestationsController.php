@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Hours;
+use App\Entity\Services;
 use App\Form\ContactType;
 use Doctrine\ORM\EntityManagerInterface;
 use SendEmail;
@@ -23,6 +24,7 @@ class PrestationsController extends AbstractController
     #[Route('/prestations', name: 'app_prestations')]
     public function index(Request $request, MailerInterface $mailer): Response
     {
+        $services = $this->entityManager->getRepository(Services::class)->findAll();
         $hours = $this->entityManager->getRepository(Hours::class)->findAll();
         $form = $this->createForm(ContactType::class);
 
@@ -37,6 +39,7 @@ class PrestationsController extends AbstractController
         }
 
         return $this->render('prestations/index.html.twig', [
+            'services' => $services,
             'hours' => $hours,
             'form' => $form->createView()
         ]);

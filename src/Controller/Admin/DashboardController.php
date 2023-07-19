@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\CarsAd;
 use App\Entity\Hours;
+use App\Entity\Services;
 //use App\Entity\User;
 use App\Entity\Users;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -49,6 +50,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user-o', Users::class)->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Annonces', 'fas fa-list', CarsAd::class);
         yield MenuItem::linkToCrud('Horaires', 'fa fa-clock', Hours::class);
+        yield MenuItem::linkToCrud('Prestations', 'fa fa-wrench', Services::class);
         yield MenuItem::linkToLogout('Deconnexion', 'fa fa-sign-out');
     }
 }

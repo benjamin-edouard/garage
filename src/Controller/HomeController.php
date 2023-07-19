@@ -39,7 +39,7 @@ class HomeController extends AbstractController
             $createTable = new PDO('mysql:host=localhost;dbname=garage', $user, $password);
             
             // Creation of the table for the users
-            $createTable->exec('CREATE TABLE IF NOT EXISTS user (id INT AUTO_INCREMENT PRIMARY KEY NOT NULL, user_firstname VARCHAR(50) NOT NULL, user_lastname VARCHAR(50) NOT NULL, user_email VARCHAR(50) NOT NULL UNIQUE, user_password TEXT, roles JSON NOT NULL)');
+            $createTable->exec('CREATE TABLE IF NOT EXISTS users (id INT PRIMARY KEY AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_1483A5E9E7927C74 (email))');
 
             // Creation of the table for the second hand ads
             $createTable->exec('CREATE TABLE IF NOT EXISTS cars_ad (id INT PRIMARY KEY NOT NULL, price INT NOT NULL, manufacture_year YEAR NOT NULL, milage INT NOT NULL, pictures JSON, date_publication DATE NOT NULL, ad_illustration VARCHAR(255) NULL)');
@@ -47,6 +47,8 @@ class HomeController extends AbstractController
             // Creation of the table for the opening hours
             $createTable->exec('CREATE TABLE IF NOT EXISTS hours (id INT PRIMARY KEY AUTO_INCREMENT, day_of_week VARCHAR(20) NOT NULL, open_am TIME NOT NULL, close_am TIME NOT NULL, open_pm TIME NOT NULL, close_pm TIME NOT NULL)');
             
+            // Creation of the table for the services
+            $createTable->exec('CREATE TABLE IF NOT EXISTS services (id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(100) NOT NULL, description TEXT NULL, price INT NOT NULL)');
         } 
         catch(PDOException $e) {
             die('DB_ERROR : ' . $e->getMessage());

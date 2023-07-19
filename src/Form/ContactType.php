@@ -43,7 +43,7 @@ class ContactType extends AbstractType
             ->add('subject', TextType::class, [
                 'label' => 'Sujet',
                 'attr' => [
-                    'class' => 'contact-form-field',
+                    'class' => 'contact-form-field field-subject',
                 ]
             ])
             ->add('user-message', TextareaType::class, [

@@ -4,6 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-app_logout:
-    path: /logout
+logout:
+    path: /app_logout
     methods: POST

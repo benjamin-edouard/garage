@@ -34,7 +34,7 @@
                         <li class="menu-item"><a href="{{path('app_prestations')}}">Nos prestations</a></li>
                         <li class="menu-item"><a href="{{path('app_second_hand_cars')}}">Nos occasions</a></li>
                         <li class="menu-item"><a href="{{path('app_contact')}}">Contact</a></li>
-                        <li class="menu-item btn btn-success"><a href="{{path('app_login')}}">Connexion</a></li>
+                        <li class="menu-item btn btn-success"><a href="{{path('admin')}}">Connexion</a></li>
                     </ul>
                 </nav>
             </menu>
@@ -53,6 +53,7 @@
         </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
         <script src="{{ asset('assets/js/filters.js')}}"></script>
-        <script src="{{ asset('assets/js/form.js')}}"></script>
+        {% block script %}
+        {% endblock %}
     </body>
 </html>
