@@ -21,6 +21,11 @@ form, label {
   width: max(80%, 400px);
 }
 
+.required:after {
+  color: red;
+  content: " *";
+}
+
 input {
   padding: 0.3rem;
 }

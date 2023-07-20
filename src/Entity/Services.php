@@ -22,6 +22,9 @@ class Services
     #[ORM\Column]
     private ?int $price = null;
 
+    #[ORM\Column(length: 100)]
+    private ?string $billing = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Services
     public function setPrice(int $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getBilling(): ?string
+    {
+        return $this->billing;
+    }
+
+    public function setBilling(string $billing): static
+    {
+        $this->billing = $billing;
 
         return $this;
     }

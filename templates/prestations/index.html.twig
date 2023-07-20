@@ -6,16 +6,17 @@
 
     <h2>Nos prestations</h2>
 
-    <table>
+    <table class="garage-services">
         <thead>
-            <tr><th>Intitulé</th><th>Prix (€)</th><th>Description</th></tr>
+            <tr><th>Description</th><th>Prix</th><th>Détails</th><th>Facturation</th></tr>
         </thead>
         <tbody>
     {% for service in services %}
         <tr>
             <td>{{ service.getTitle() }}</td>
-            <td>{{ service.getPrice() }}</td>
-            <td>{{ service.getDescription() }}
+            <td>{{ service.getPrice() / 100|number_format('0', '', '') }} €</td>
+            <td>{{ service.getDescription() }}</td>
+            <td>{{ service.getBilling() }}</td>
         </tr>
     {% endfor %}
         </tbody>

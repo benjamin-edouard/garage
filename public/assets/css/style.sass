@@ -60,6 +60,8 @@ main.home-cover
             font-size: 1.5rem
             margin: 0.5rem
 
+// TODO : DRY on table styling
+
 /* HOUR TABLE */
 table.table-opening-hours
     font-size: 1.2rem
@@ -69,6 +71,9 @@ table.table-opening-hours
         text-align: center
     tr:nth-child(odd)
         background-color: rgb(216, 216, 216)
+    tr
+        &:hover
+            background-color: $orange-wheel
     td:first-child
         font-weight: bold
     td:last-child
@@ -114,6 +119,30 @@ div.car-price
 
 img.ad-illustration
     height: 200px
+
+/* SECTION SERVICES */
+
+table.garage-services
+    margin: 3% auto
+    letter-spacing: 0.04rem
+    width: min(90%, 700px)
+    thead
+        background-color: $black
+        color: $baby-powder
+        font-weight: bold
+        font-size: 1.1rem
+        th
+            padding: 15px
+    tbody
+        tr:nth-child(odd)
+            background-color: rgb(216, 216, 216)
+        tr
+            &:hover
+                background-color: $orange-wheel
+                font-weight: 700
+        td
+            padding: 10px
+            font-size: 1.1rem
 
 // 1100px BREAKPOINT ---------------------------------------------------------------------
 @media screen and (min-width: 1100px)

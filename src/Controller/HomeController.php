@@ -48,7 +48,9 @@ class HomeController extends AbstractController
             $createTable->exec('CREATE TABLE IF NOT EXISTS hours (id INT PRIMARY KEY AUTO_INCREMENT, day_of_week VARCHAR(20) NOT NULL, open_am TIME NOT NULL, close_am TIME NOT NULL, open_pm TIME NOT NULL, close_pm TIME NOT NULL)');
             
             // Creation of the table for the services
-            $createTable->exec('CREATE TABLE IF NOT EXISTS services (id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(100) NOT NULL, description TEXT NULL, price INT NOT NULL)');
+            $createTable->exec('CREATE TABLE IF NOT EXISTS services (id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(100) NOT NULL, description TEXT NULL, price INT NOT NULL, billing VARCHAR(100) NOT NULL)');
+
+            //$createTable->exec('ALTER TABLE SERVICES ADD billing VARCHAR(100) NOT NULL');
         } 
         catch(PDOException $e) {
             die('DB_ERROR : ' . $e->getMessage());
