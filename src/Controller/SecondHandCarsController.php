@@ -36,7 +36,7 @@ class SecondHandCarsController extends AbstractController
             $sendEmail = new SendEmail();
             $sendEmail->send($mailer, $form);
             
-            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('second_hand_cars/index.html.twig', [

@@ -4,6 +4,27 @@ controllers:
         namespace: App\Controller
     type: attribute
 
+# Route to the home page
+homepage:
+    path: /
+    controller: App\Controller\HomeController::index
+
+# Route to the "our services" page
+services:
+    path: /nos-services
+    controller: App\Controller\PrestationsController::index
+
+# Route to the "second hand cars" page
+second-hand-cars:
+    path: /nos-occasions
+    controller: App\Controller\SecondHandCarsController::index
+
+# Route to the contact page
+contact:
+    path: /contact
+    controller: App\Controller\ContactController::index
+
+# Route for logging out from the admin dashboard
 logout:
     path: /app_logout
     methods: POST

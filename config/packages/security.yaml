@@ -22,7 +22,7 @@ security:
                 enable_csrf: true
             logout:
                 path: app_logout
-                target: app_home
+                target: homepage
 
 
             # activate different ways to authenticate

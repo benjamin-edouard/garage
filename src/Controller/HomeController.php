@@ -24,7 +24,7 @@ class HomeController extends AbstractController
          $this->entityManager = $entityManager;
     }
 
-    #[Route('/', name: 'app_home')]
+    //#[Route('/', name: 'app_home')]
     public function index(Request $request, MailerInterface $mailer): Response
     {
         $user = 'root';
@@ -64,7 +64,7 @@ class HomeController extends AbstractController
             $sendEmail = new SendEmail();
             $sendEmail->send($mailer, $form);
             
-            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('homepage', [], Response::HTTP_SEE_OTHER);
         }
 
         $hours = $this->entityManager->getRepository(Hours::class)->findAll();
